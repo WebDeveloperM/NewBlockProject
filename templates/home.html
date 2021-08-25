@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<h1>
+    Salom Siz Asosiy Home sahifasidasiz</h1>
+    {% if user.is_authenticated %}
+        <p>Hush kelibsiz {{user.username}}.</p>
+        <p>
+            <a href="{% url 'logout' %}">Saytdan Chiqish</a>
+        </p>
+        {% else %}
+        <p>
+            <a href="{% url 'login' %}">Saytga kiring</a> |
+            <a href="{% url 'signup' %}">Ro`yhatda o`tish</a>
+        </p>
+        {% endif %} 
+    <br>
+    <img src="../static/rasm.jpg" alt="" class="w-50 mt-5">
+ {% endblock %}

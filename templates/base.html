@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asosiy sahifa</title>
+    <link rel="stylesheet" href="{% static '../static/css/bootstrap.min.css' %}">
+</head>
+
+
+<body>
+
+    <div class="container">
+        <h1>
+            <a href="{% url 'base' %}">Assalomu aleykum siz asosiy sahifadasiz</a>
+
+        </h1>
+
+      
+
+
+        <a href="{% url 'home' %}" type="button" class="btn btn-primary">Home</a>
+        <a href="{% url 'about' %}" type="button" class="btn btn-primary">About</a>
+        <a href="{% url 'service' %}" type="button" class="btn btn-primary">Servic</a> 
+
+    
+        
+        {% block content %} 
+        
+        {% endblock %}
+
+
+        <br> {% for post in object_list %}
+        <div class="bg-success mt-5">
+            <h1>
+                <a href="{% url 'post_detail' post.id %} " class="btn ">
+            {{ post.title }}
+            </a>
+            </h1>
+
+            <p>{{ post.body | slice:":100 "}} ... </p>
+        </div>
+        {% endfor %}
+
+        <button class="btn">
+        <a href="{% url 'new_post' %}"> + Yangi post qoshish</a>
+        
+    </div>
+    </button>
+
+</body>
+
+</html>
